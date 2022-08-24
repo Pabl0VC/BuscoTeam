@@ -1,0 +1,34 @@
+/* REGISTRO Y LOGIN */
+.bg-col{
+    background-color: #f7f7f7;
+}
+
+/* INICIO */
+.img-body{
+    background-image: url('/static/img/inicio.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.container-inicio{
+    text-align: start;
+    margin: 50px;
+}
+
+.logo-inicio{
+    text-decoration: none;
+    color: white;
+    font-size: 50px;
+    font-weight:bold;
+}
+
+.botones{
+    margin: 220px;
+}
+
+nav{
+    background-color:#f7f7f7;
+
+}

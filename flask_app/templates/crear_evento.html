@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block title %}
+<title>Crear evento deportivo</title>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center text-black display-5 mx-5">Bienvenido {{user.first_name}}</h1>
+    <h1>Agregar evento</h1> 
+</div>
+
+    <form action="/crear/evento" method="post" class="col-10 p-4 my-4 bg-dark text-light mx-auto rounded-3 border border-5 border border-warning">
+        {% with messages = get_flashed_messages(category_filter=['evento']) %}
+            {% if messages %}
+            <div class="alert alert-danger" role="alert">
+                <strong>WHUAU!!!!</strong>
+                    {% for message in messages %}
+                    <p>{{message}}</p>
+                    {% endfor %}
+            </div>
+            {% endif %}
+        {% endwith %}
+        <div class="d-flex justify-content-between col-12">
+            <div class="col-6">
+                <div class="form-group mb-3 col-5">
+                    <label for="deporte">Deporte:</label>
+                    <select type="text" name="deporte_id"  class="form-select" id="floatingSelect" aria-label="Floating label select example" required>
+                        <option selected disabled value="">Selecciona un deporte </option>
+                        {% for a in deportes %}
+                        <option value="{{a.id}}">{{a.nombre}}</option>
+                        {% endfor %}
+                    </select> 
+                </div>
+                <div class="form-group mb-3 col-5">
+                    <label for="fecha">Fecha:</label>
+                    <input type="date" name="fecha" class="form-control">
+                </div>
+                <div class="form-group mb-3 col-5" >
+                    <label for="hora_juego">Hora juego:</label>
+                    <input type="time" name="hora_juego" class="form-control">
+                </div>
+                <div class="form-group mb-3 col-3">
+                    <label for="edad_min">Edad minima:</label>
+                    <input type="number" name="edad_min" min="18" class="form-control">
+                </div>
+                <div class="form-group mb-3 col-3">
+                    <label for="edad_max">Edad maxima:</label>
+                    <input type="number" name="edad_max" min="18" class="form-control">
+                </div>
+                <div class="form-group mb-4 col-4">
+                    <label for="jugadores_requeridos">Jugadores requeridos:</label>
+                    <input type="number" name="jugadores_requeridos" min="2" class="form-control">
+                </div>
+                <div class="form-group mb-3 col-5">
+                    <label for="ubicacion">Ubicación:</label>
+                    <input type="text" name="ubicacion" class="form-control">
+                </div>
+                <br>
+                <input type="submit" value="Agregar" class="btn btn-warning">
+            </div>
+            <div class="col-4"></div>
+        </div>
+    </form>
+
+{% endblock %}

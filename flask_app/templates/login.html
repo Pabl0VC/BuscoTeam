@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/style.css') }}">
+</head>
+<body>
+    <div class="container-fluid w-75 rounded-5 shadow mt-5">
+        <div class="row">
+            <div class="col bg d-none d-lg-block p-0">
+                <img src="{{ url_for('static', filename='/img/login.jpg') }}" href="index.html" class="w-100 h-100" alt="img-login">
+            </div>
+
+            <div class="col bg-col px-5">
+                <div class="text-center mt-5">
+                    <a href="/">
+                        <img src="{{ url_for('static', filename='/img/buscoteam.png') }}"  width="100px" alt="img-logo">
+                    </a>
+                </div>
+                <h2 class="fw-bold text-center py-4">Bienvenido</h2>
+                <!-- login -->
+                <form action="/login" method="POST">
+                    {% with messages = get_flashed_messages(category_filter=['login']) %}
+                        {% if messages %}
+                        <div class="alert alert-danger" role="alert">
+                            <strong>NOOOOOOO!!!!</strong>
+                                {% for message in messages %}
+                                <p>{{message}}</p>
+                                {% endfor %}
+                        </div>
+                        {% endif %}
+                    {% endwith %}
+                    <div class="mb-4">
+                        <label for="email" class="form-label">Correo electrónico</label>
+                        <input type="text" name="email" class="form-control">
+                    </div>
+                    <div class="mb-4">
+                        <label for="password" class="form-label">Contraseña</label>
+                        <input type="password" name="password" class="form-control">
+                    </div>
+                    <div class="d-grid">
+                        <input type="submit" value="Iniciar Sesión" class="btn btn-primary">
+                    </div>
+                    <div class="my-4">
+                        <span>¿No tienes cuenta? <a href="/register">Regístrate</a> </span>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+</html>

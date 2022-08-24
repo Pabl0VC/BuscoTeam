@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block title %}
+<title>Home</title>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center text-black display-5 mx-5">Bienvenido {{user.first_name}}</h1>
+    
+</div>
+<div class="row ">
+    <h2 class="col-8 mx-auto mt-4 display-6 ">Eventos disponibles</h2>
+    <div class="card col-8 mx-auto rounded-3 border border-5 border border-warning bg-light ">
+        
+        <div class="card-body ">
+            <table class="table table-light table-hover">
+                <thead>
+                    <tr class="text-center text-black">
+                        <th>Deporte</th>
+                        <th>Fecha</th>
+                        <th>Hora del juego</th>
+                        <th>Ubicación</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for f in eventos %}
+                        <tr >
+                            <td class="text-center text-black">{{f.deporte}}</td>
+                            <td class="text-center text-black">{{f.fecha.strftime('%d-%m-%Y')}}</td>
+                            <td class="text-center text-black">{{f.hora_juego}}</td>
+                            <td class="text-center text-black">{{f.ubicacion}}</td>
+                            <td class="text-center">
+                                {% if f.creador_id != session.user_id %}
+                                <a class="btn btn-outline-success" href="/ingresar/evento/{{f.id}}">Ingresar a evento</a>
+                                <a class="btn btn-outline-danger" href="/evento/{{f.id}}">Ver</a>
+                                {% endif %} 
+                                {% if f.creador_id == session.user_id %}
+                                <a class="btn btn-outline-danger mx-3" href="/editar/evento/{{f.id}}">Editar</a>
+                                <a class="btn btn-outline-danger" href="/destroy/evento/{{f.id}}">Eliminar</a>
+                                {% endif %}                                                                                                              
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <a href="/nuevo/evento" class="btn btn-outline-warning  col-3 float-end m-auto">Crear evento deportivo</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

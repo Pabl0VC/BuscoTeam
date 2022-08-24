@@ -1,0 +1,13 @@
+pipenv requirements
+-i https://pypi.org/simple
+bcrypt==3.2.2
+cffi==1.15.1
+click==8.1.3
+flask==2.1.3
+flask-bcrypt==1.0.1
+itsdangerous==2.1.2
+jinja2==3.1.2
+markupsafe==2.1.1
+pycparser==2.21
+pymysql==1.0.2
+werkzeug==2.2.1

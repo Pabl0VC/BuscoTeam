@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}
+<title>Evento</title>
+{% endblock %}
+
+{% block content %}
+
+
+<div class="card col-6 mx-auto my-3 bg-dark text-light rounded-3 border border-5 border border-warning">
+    <div class="card-body">
+        <h2 class="card-title text-light">{{evento.deporte}}</h2>
+        <p class="card-text">Fecha:  {{evento.fecha.strftime('%d-%m-%Y')}}</p>
+        <p class="card-text">Hora:  {{evento.hora_juego}}</p>
+        <p class="card-text">Edad jugadores mínimo:  {{evento.edad_min}}</p>
+        <p class="card-text">Edad jugadores máximo:  {{evento.edad_max}}</p>
+        <p class="card-text">Jugadores requeridos:  {{evento.jugadores_requeridos}}</p>
+        <p class="card-text">Ubicación:  {{evento.ubicacion}}</p>
+        <br>
+    </div>
+</div>
+
+
+{% endblock %}
