@@ -50,7 +50,7 @@ def editar_evento(evento_id):#
     if 'user_id' not in session:
         return redirect('/logout')
     data = {
-        "deporte_id":evento_id
+        "evento_id":evento_id
     }
     user_data = {
         "id":session['user_id']
@@ -114,6 +114,7 @@ def mostrar_evento(id):
         return redirect('/logout')
     data = {
         "evento_id":id
+
     }
     user_data = {
         "id":session['user_id']

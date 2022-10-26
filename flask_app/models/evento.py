@@ -17,6 +17,9 @@ class Evento:
         self.updated_at = db_data['updated_at']
         self.deporte_id = db_data['deporte_id']
         self.deporte = db_data['deporte']
+        # self.participante = db_data['participante']pp
+
+        # self.evento_id =db_data['evento_id']
 
 
 
@@ -82,6 +85,24 @@ class Evento:
         WHERE c.id = %(evento_id)s;"""
         results = connectToMySQL(cls.db_name).query_db(query,data)
         return cls( results[0] )
+
+
+#MOSTRAR PARTICIPANTEs
+    # @classmethod
+    # def mostrar_participantes(cls,data):
+    #     query = """SELECT CONCAT(u.first_name, ' ',u.last_name) AS participante, evento_id
+    #     FROM busco_team.eventos_users AS c
+    #     JOIN busco_team.users AS u 
+    #     ON (c.user_id = u.id) 
+    #     WHERE c.evento_id = %(evento_id)s;"""
+    #     results = connectToMySQL(cls.db_name).query_db(query,data)
+    #     all_participante = []
+    #     for row in results:
+    #         print(row['participante'])
+    #         all_participante.append( cls(row) )
+    #     return all_participante
+
+
 
 
 
